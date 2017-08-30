@@ -1,0 +1,38 @@
+<apex:page Controller="firstCustomController">
+	<apex:form > 
+		<apex:pageBlock Title="Account Details">
+			<apex:pageBlockTable value="{!l1}" var="listofvalues">
+         	<apex:column >
+            	<apex:facet name="header"> Name</apex:facet>
+            	<apex:commandLink value="{!listofvalues.Name}" action="{!setupContacts}" rerender="conttable">
+            		<apex:param value="{!listofvalues.id}" name="idforContact" assignTo="{!recid}"/>
+            	</apex:commandLink>
+         	</apex:column>
+         	<apex:column >
+            	<apex:facet name="header"> Account number</apex:facet>
+            	<apex:outputText value="{!listofvalues.AccountNumber}"/>
+         	</apex:column>
+         	<apex:column >
+            	<apex:facet name="header"> Phone Number</apex:facet>
+            	<apex:outputText value="{!listofvalues.Phone}"/>
+         	</apex:column>
+      		</apex:pageBlockTable>
+   		</apex:pageBlock>
+  	</apex:form>
+  	
+  	<apex:pageBlock Title="Contacts">
+    	<apex:pageBlockTable value="{!contacts}" var="listofcontacts" id="conttable">
+        	<apex:column value="{!listofcontacts.id}"/>
+        	<apex:column value="{!listofcontacts.FirstName}"/>
+        	<apex:column value="{!listofcontacts.LastName}"/>
+     	</apex:pageBlockTable>
+   </apex:pageBlock>
+  
+	<apex:pageBlock Title="Opportunities">
+    	<apex:pageBlockTable value="{!opp}" var="listofopp" id="conttable">
+        	<apex:column value="{!listofopp.id}"/>
+        	<apex:column value="{!listofopp.Name}"/>
+        </apex:pageBlockTable>
+  	</apex:pageBlock>
+
+</apex:page>
