@@ -1,0 +1,59 @@
+<!-- Assignment 1
+1. Create a Visualforce Page that will allow the user to search for the entered value across the
+following objects:
+• Accounts
+• Contacts
+• Leads
+• Opportunities
+2. Provide a text box that allows the user to enter a value to search. When the Search button is clicked
+the program should search across the above mentioned objects on the basis of whether of the
+following attributes and accordingly display the results.
+3. The search value should be compared with the following attributes on the above mentioned objects
+• Name
+• Last Name
+• First Name
+4. The search should not only look for exact matches i.e. If the search value entered is ‘test’ then
+records having the Name/Last Name/First Name as Test 1, Test 99 etc should also be returned.
+5. The page should only be partially updated, displaying the matching search results in different
+sections.
+6. Only relevant page blocks should be displayed. If a value matches the only Account and Lead
+records then only the page blocks for Account and Lead should be shown.
+
+-->
+<apex:page Controller="SearchClass">
+
+   <apex:form > 
+      <apex:inputText value="{!searchstring}" label="Input"/> 
+      <apex:commandButton value="Search records" action="{!search}"/> 
+       
+      <apex:pageBlock title="Search Result For Account" rendered="{!acc.size != 0}"> 
+         <apex:pageblockTable value="{!acc}" var="a" > 
+            <apex:column value="{!a.name}"/> 
+            <apex:column value="{!a.id}"/> 
+         </apex:pageBlockTable> 
+      </apex:pageBlock> 
+      
+      <apex:pageBlock title="Search Result For contact" rendered="{!con.size != 0}"> 
+         <apex:pageblockTable value="{!con}" var="cont"  > 
+            <apex:column value="{!cont.name}"/> 
+            <apex:column value="{!cont.id}"/> 
+         </apex:pageBlockTable> 
+      </apex:pageBlock> 
+      
+      <apex:pageBlock title="Search Result For Lead"  rendered="{!lead.size != 0}"> 
+         <apex:pageblockTable value="{!lead}" var="leads" > 
+            <apex:column value="{!leads.name}"/> 
+            <apex:column value="{!leads.id}"/> 
+         </apex:pageBlockTable> 
+      </apex:pageBlock> 
+      
+      <apex:pageBlock title="Search Result For Opportunities" rendered="{!opp.size != 0}"> 
+         <apex:pageblockTable value="{!opp}" var="opps"  > 
+            <apex:column value="{!opps.name}"/> 
+            <apex:column value="{!opps.id}"/> 
+         </apex:pageBlockTable> 
+      </apex:pageBlock> 
+  
+  
+   </apex:form> 
+</apex:page>
