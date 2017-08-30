@@ -1,3 +1,11 @@
+<!--Assignment 2
+1. Query and display all the accounts in a tabular format on a visualforce page.
+2. Display the columns name, phone, address.
+3. The name should be a hyperlink and on click of the link display contacts and opportunity records
+related to the account in different page block tables.
+4. The page should be partially rendered and it should not reload.
+
+-->
 <apex:page Controller="firstCustomController">
 	<apex:form > 
 		<apex:pageBlock Title="Account Details">
